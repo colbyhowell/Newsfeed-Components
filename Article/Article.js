@@ -128,9 +128,9 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   const articleClose = document.createElement('span')
 
     article.appendChild(articleTitle)
-    articleTitle.appendChild(articleDate)
-    articleDate.appendChild(articleContent)
+    article.appendChild(articleDate)
     article.appendChild(articleExpand)
+    article.appendChild(articleContent)
     articleExpand.appendChild(articleClose)
 
       article.classList.add('article')
@@ -139,13 +139,13 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
       articleExpand.classList.add('expandButton')
 
         articleTitle.textContent = title
-        articleContent.textContent = 
-          firstParagraph,secondParagraph,thirdParagraph
+        articleContent.textContent = firstParagraph
+        articleDate.textContent = date
         articleExpand.textContent = "Expand"
         articleClose.textContent = "Close"
 
-            articleExpand.addEventListener('click', => {
-              articleContent.classList.toggle('article-open')
+            articleExpand.addEventListener('click', event => {
+              article.classList.toggle('article-open')
             })
 
 return article
