@@ -36,29 +36,27 @@ let menuItems = [
 
 const menuButton = document.querySelector('.menu-button')
 
-menuItems.forEach(links => {
-  menuButton.appendChild(createMenu(link[i]))
-})
 
-function createMenu(){
-const menu = document.createElement('div')
-const menuList = document.createElement('ul')
-const menuLinks = document.createElement('li')
-
-  menu.appendChild(menuList)
-  menu.appendChild(menuLinks[0])
-  menu.appendChild(menuLinks[1])
-  menu.appendChild(menuLinks[2])
-  menu.appendChild(menuLinks[3])
-  menu.appendChild(menuLinks[4])
-  menu.appendChild(menuLinks[5])
+function createMenu(links){
 
   menu.classList.add('menu')
-  menuLinks.classList.add('li')
+  menuLinks.classList.add('menu ul li')
+  
+const menu = document.createElement('div')
+const menuList = document.createElement('ul')
+const menuLinks = links.forEach(link => {
+  document.createElement('li')
+  textContent = link
+  menuList.appendChild(menuLinks)
+})
 
 
   menuButton.addEventListener('click', event => {
     menu.classList.toggle('menu--open')
   })
 
+  return menu
 }
+
+const header = document.querySelector('.header')
+header.appendChild(createMenu(menuItems))
