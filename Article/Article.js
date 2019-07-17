@@ -112,3 +112,51 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+const articleList = document.querySelector('.articles')
+
+data.forEach(theData => {
+  articleList.appendChild(createArticle(theData.title, theData.date, theData.firstParagraph, theData.secondParagraph, theData.thirdParagraph))
+})
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const articleContent1 = document.createElement('p')
+  const articleContent2 = document.createElement('p')
+  const articleContent3 = document.createElement('p')
+  const articleExpand = document.createElement('span')
+  const articleClose = document.createElement('span')
+
+    article.appendChild(articleTitle)
+    article.appendChild(articleDate)
+    article.appendChild(articleExpand)
+    article.appendChild(articleContent1)
+    article.appendChild(articleContent2)
+    article.appendChild(articleContent3)
+
+      article.classList.add('article')
+      articleTitle.classList.add('h2') 
+      articleDate.classList.add('date')
+      articleExpand.classList.add('expandButton')
+
+        articleTitle.textContent = title
+        articleContent1.textContent = firstParagraph
+        articleContent2.textContent = secondParagraph
+        articleContent3.textContent = thirdParagraph
+        articleDate.textContent = date
+        articleExpand.textContent = "Expand"
+
+            articleExpand.addEventListener('click', event => {
+              article.classList.toggle('article-open')
+              if(article.classList.contains('article-open')){
+                articleExpand.textContent = "Close"
+              }else{
+                articleExpand.textContent = "Expand"
+              }
+            })
+
+return article
+
+}
