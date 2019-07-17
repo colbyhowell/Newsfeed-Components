@@ -123,15 +123,18 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   const article = document.createElement('div')
   const articleTitle = document.createElement('h2')
   const articleDate = document.createElement('p')
-  const articleContent = document.createElement('p')
+  const articleContent1 = document.createElement('p')
+  const articleContent2 = document.createElement('p')
+  const articleContent3 = document.createElement('p')
   const articleExpand = document.createElement('span')
   const articleClose = document.createElement('span')
 
     article.appendChild(articleTitle)
     article.appendChild(articleDate)
     article.appendChild(articleExpand)
-    article.appendChild(articleContent)
-    articleExpand.appendChild(articleClose)
+    article.appendChild(articleContent1)
+    article.appendChild(articleContent2)
+    article.appendChild(articleContent3)
 
       article.classList.add('article')
       articleTitle.classList.add('h2') 
@@ -139,13 +142,19 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
       articleExpand.classList.add('expandButton')
 
         articleTitle.textContent = title
-        articleContent.textContent = firstParagraph
+        articleContent1.textContent = firstParagraph
+        articleContent2.textContent = secondParagraph
+        articleContent3.textContent = thirdParagraph
         articleDate.textContent = date
         articleExpand.textContent = "Expand"
-        articleClose.textContent = "Close"
 
             articleExpand.addEventListener('click', event => {
               article.classList.toggle('article-open')
+              if(article.classList.contains('article-open')){
+                articleExpand.textContent = "Close"
+              }else{
+                articleExpand.textContent = "Expand"
+              }
             })
 
 return article
